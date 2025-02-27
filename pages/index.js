@@ -28,7 +28,8 @@ const index = () => {
   <OrbitControls 
     target={[0, 0.8, 0]} // Lower the focus point more
     minDistance={2} 
-    maxDistance={5} 
+    maxDistance={5}
+    enablePan={false} 
   />
   <ambientLight />
   <directionalLight position={[-5, 5, 5]} />
@@ -39,13 +40,16 @@ const index = () => {
 
       {/* Keyboard-style Buttons (Small, Centered, and 10px from Bottom) */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 
-                grid grid-cols-7 gap-2 bg-gray-800 p-4 rounded-lg shadow-xl" dir="rtl">
+            grid grid-cols-7 gap-3 bg-gray-800 p-4 rounded-xl shadow-2xl 
+            w-[85vw] max-w-[800px] overflow-y-auto" dir="rtl">
   {allAnimation.map(({ name, label }) => (
     <button
       key={name}
       onClick={() => setCurrentAnimationName(name)}
-      className="bg-gray-900 text-white px-4 py-2 text-lg rounded-md shadow-md 
-                 hover:bg-gray-700 active:scale-95 transition-transform"
+      className="bg-gray-900 text-white text-xl px-5 py-2 
+                 md:text-lg md:px-4 md:py-2 
+                 sm:text-base sm:px-3 sm:py-1 
+                 rounded-md shadow-md hover:bg-gray-700 active:scale-95 transition-all"
     >
       {label}
     </button>
