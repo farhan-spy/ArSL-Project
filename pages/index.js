@@ -1,11 +1,16 @@
 import { Canvas } from '@react-three/fiber'
-import React, { useState } from 'react'
+import React, { useState, Suspense, useMemo } from 'react';
 import Character from '../components/Character'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Html, useProgress } from '@react-three/drei'
+
+const Loader = () => {
+  const { progress } = useProgress();
+  return <Html center>{progress.toFixed(0)}% loaded</Html>;
+};
 
 const index = () => {
 
-  const [allAnimation, setAllAnimation] = useState([
+  const allAnimation = useMemo (() => [
     { name: "aleph", label: "ا" }, { name: "baa", label: "ب" }, { name: "ta", label: "ت" },
     { name: "thaa", label: "ث" }, { name: "jeem", label: "ج" }, { name: "haa", label: "ح" },
     { name: "khaa", label: "خ" }, { name: "dal", label: "د" }, { name: "dhal", label: "ذ" },
@@ -16,7 +21,7 @@ const index = () => {
     { name: "kaaf", label: "ك" }, { name: "laam", label: "ل" }, { name: "meem", label: "م" },
     { name: "nun", label: "ن" }, { name: "ha", label: "ه" }, { name: "waw", label: "و" },
     { name: "yaa", label: "ي" }
-  ]);
+  ], []);
   
 
   const [currentAnimationName, setCurrentAnimationName] = useState("ain");
@@ -33,14 +38,16 @@ const index = () => {
   />
   <ambientLight />
   <directionalLight position={[-5, 5, 5]} />
+  <Suspense fallback={<Loader />}>
   <Character currentAnimationName={currentAnimationName} />
+  </Suspense>
 </Canvas>
 
 
 
       {/* Keyboard-style Buttons (Small, Centered, and 10px from Bottom) */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 
-            grid grid-cols-7 gap-3 bg-gray-800 p-4 rounded-xl shadow-2xl 
+            grid grid-cols-7 gap-3 keyboard-container p-4 rounded-xl shadow-2xl 
             w-[85vw] max-w-[800px] overflow-y-auto" dir="rtl">
   {allAnimation.map(({ name, label }) => (
     <button

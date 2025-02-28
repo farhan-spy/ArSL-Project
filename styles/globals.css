@@ -1,3 +1,15 @@
 @import "tailwindcss";
 
 
+.keyboard-container {
+    background-color: #1b2533 !important; /* Forces bg-gray-800 */
+  }
+
+button {
+    background-color: #0c1420 !important; /* Forces bg-gray-900 */
+    color: #ffffff !important; /* Forces text-white */
+  }
+  
+  button:hover {
+    background-color: #374151 !important; /* Matches bg-gray-700 */
+  }
