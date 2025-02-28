@@ -40,7 +40,11 @@ const index = () => {
     target={[0, 0.8, 0]} // Lower the focus point more
     minDistance={2} 
     maxDistance={5}
-    enablePan={false} 
+    enablePan={false}
+    minPolarAngle={Math.PI / 2.5} 
+  maxPolarAngle={Math.PI / 2.5}
+  minAzimuthAngle={-Math.PI / 4} 
+  maxAzimuthAngle={Math.PI / 4}  
   />
   <ambientLight />
   <directionalLight position={[-5, 5, 5]} />
