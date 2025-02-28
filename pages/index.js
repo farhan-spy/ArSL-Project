@@ -5,7 +5,13 @@ import { OrbitControls, Html, useProgress } from '@react-three/drei'
 
 const Loader = () => {
   const { progress } = useProgress();
-  return <Html center>{progress.toFixed(0)}% loaded</Html>;
+  return (
+    <Html>
+      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 text-3xl font-bold text-white">
+        {progress.toFixed(0)}% loaded
+      </div>
+    </Html>
+  );
 };
 
 const index = () => {
