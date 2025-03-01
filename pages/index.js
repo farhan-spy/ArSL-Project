@@ -46,7 +46,7 @@ const index = () => {
   minAzimuthAngle={-Math.PI / 4} 
   maxAzimuthAngle={Math.PI / 4}  
   />
-  <ambientLight />
+  <ambientLight intensity={2} />
   <directionalLight position={[-5, 5, 5]} />
   <Suspense fallback={<Loader />}>
   <Character currentAnimationName={currentAnimationName} />
